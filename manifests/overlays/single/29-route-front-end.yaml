@@ -2,11 +2,9 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: sock-shop
-  namespace: sock-shop
   labels:
     service: front-end
 spec:
-  subdomain: sock-shop
   to:
     kind: Service
     name: front-end

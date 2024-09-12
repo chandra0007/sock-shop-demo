@@ -15,8 +15,8 @@ The purpose of this application is to use a reference microservices demo to show
 2. [orders](https://github.com/microservices-demo/orders)
 3. [payment](https://github.com/microservices-demo/payment)
 4. [user](https://github.com/microservices-demo/user)
-*user-db* is Intel only.
-5. [catalogue](https://github.com/microservices-demo/catalogue) *catalogue-db* is Intel only.
+*user-db* is Intel only. The `power` overlay supports `ppc64le`.
+5. [catalogue](https://github.com/microservices-demo/catalogue) *catalogue-db* is Intel only. The `power` overlay supports `ppc64le`.
 6. [cart](https://github.com/microservices-demo/carts)
 7. [shipping](https://github.com/microservices-demo/shipping)
 8. [queue-master](https://github.com/microservices-demo/queue-master)
@@ -93,7 +93,7 @@ Have fun and use it.
 
 ### Images
 
-The applications are compiled into images that are hosted at [quay.io/repository/cbade_cs/openshift-demo](https://quay.io/repository/cbade_cs/openshift-demo?tab=tags). There is a manifest-listed image for each application.
+The applications are compiled into images that are hosted at [quay.io/repository/powercloud](https://quay.io/repository/powercloud). There is a manifest-listed image for each application in the corresponding sock-shop repository.
 
 To build the images, use: 
 
@@ -101,7 +101,7 @@ To build the images, use:
 
 ```
 ARCH=amd64
-REGISTRY=quay.io/repository/cbade_cs/openshift-demo
+REGISTRY=quay.io/repository/powercloud/sock-shop-${APP}
 make cross-build-amd64
 ```
 
@@ -109,18 +109,19 @@ make cross-build-amd64
 
 ```
 ARCH=ppc64le
-REGISTRY=quay.io/repository/cbade_cs/openshift-demo
+REGISTRY=quay.io/repository/powercloud/sock-shop-${APP}
 make cross-build-amd64
 ```
 
 To push the manifest-listed images, use:
 
 ```
-REGISTRY=quay.io/repository/cbade_cs/openshift-demo
-ARM_REGISTRY=quay.io/repostiroy/pbastide_rh/openshift-demo
+REGISTRY=quay.io/repository/powercloud/sock-shop-${APP}
+ARM_REGISTRY=quay.io/repostiroy/powercloud/sock-shop-${APP}
 APP=front-end
 make push-ml
 ```
+### Diagrams
 
 The architecture is:
 
@@ -130,6 +131,10 @@ The architecture is:
 The application looks like: 
 
 ![socks-orders.png](socks-orders.png)
+
+The microservices interaction diagram is:
+![image](https://github.com/ocp-power-demos/sock-shop-demo/assets/3016328/ec62c687-5609-4264-bc10-82b2b2003185)
+
 
 ### Development
 
